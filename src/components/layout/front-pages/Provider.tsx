@@ -1,11 +1,12 @@
 'use client'
-import { ReactNode, useRef } from 'react'
+import { ReactNode, useEffect, useRef } from 'react'
 
 import { useImageVariant } from '@core/hooks/useImageVariant'
+import { useSettings } from '@core/hooks/useSettings'
 import type { Mode } from '@core/types'
 import clsx from 'clsx'
 
-import styles from '@components/layout/front-pages/styles.module.css'
+import styles from '@views/front-pages/landing-page/styles.module.css'
 import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 interface Props {
@@ -20,14 +21,23 @@ const FrontProvider = ({ mode, children }: Props) => {
 
   const scedhuleBg = useImageVariant(mode, scedhuleBgLight, scedhuleBgDark)
 
+  const { updatePageSettings } = useSettings()
+
+  useEffect(() => {
+    return updatePageSettings({
+      skin: 'default',
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <section
       id='home'
       ref={ref}
-      className='relative overflow-hidden pbs-[70px] -mbs-[70px] bg-backgroundPaper z-[1] min-h-[100vh]'>
+      className='relative overflow-hidden pbs-[35px] -mbs-[70px] bg-backgroundPaper z-[1] min-h-[100vh]'>
       <img src={scedhuleBg} alt='' className={styles.heroSectionBg} />
       <div className={clsx('pbs-16 overflow-hidden', frontCommonStyles.layoutSpacing)}>
-        <div className='md:max-is-[550px] mlb-0 mli-auto text-center mb-20'>{children}</div>
+        <div className='md:max-is-[550px] mlb-0 mli-auto text-center mb-35'>{children}</div>
       </div>
     </section>
   )

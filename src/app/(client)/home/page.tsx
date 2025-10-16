@@ -1,13 +1,14 @@
-// Component Imports
-// Server Action Imports
-import { getServerMode } from '@core/utils/serverHelpers'
-import LandingPageWrapper from '@views/front-pages/landing-page'
+import ScedhuleWidget from '@views/front-pages/landing-page/ScheduleWidget'
+import SummaryWidget from '@views/front-pages/landing-page/SummaryWidget'
 
 const Index = async () => {
-  // Vars
-  const mode = await getServerMode()
-
-  return <LandingPageWrapper mode={mode} />
+  return (
+    <>
+      <SummaryWidget />
+      <div className='my-3' />
+      <ScedhuleWidget />
+    </>
+  )
 }
 
 export default Index

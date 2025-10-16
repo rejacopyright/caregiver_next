@@ -1,58 +1,67 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+
 import CustomAvatar from '@core/components/mui/Avatar'
-import type { ThemeColor } from '@core/types'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
 type DataType = {
+  path: string
+  label: string
   icon: string
-  stats: string
-  title: string
-  color: ThemeColor
+  activeIcon: string
 }
 
 const data: DataType[] = [
   {
-    stats: '8,458',
-    color: 'primary',
-    title: 'Customers',
-    icon: 'ri-user-star-line',
+    path: '/',
+    label: 'Home',
+    icon: 'ri-home-5-line',
+    activeIcon: 'ri-home-5-fill',
   },
   {
-    stats: '$28.5k',
-    color: 'warning',
-    icon: 'ri-pie-chart-2-line',
-    title: 'Total Profit',
+    path: '/scedhule',
+    label: 'Scedhule',
+    icon: 'ri-calendar-schedule-line',
+    activeIcon: 'ri-calendar-schedule-fill',
   },
   {
-    color: 'info',
-    stats: '2,450k',
-    title: 'Transactions',
-    icon: 'ri-arrow-left-right-line',
+    path: '/profile',
+    label: 'Profile',
+    icon: 'ri-user-4-line',
+    activeIcon: 'ri-user-4-fill',
   },
 ]
 
 const BottomNav = () => {
+  const router = useRouter()
+
   return (
-    <Card>
-      <CardContent>
-        <div className='flex flex-wrap justify-between gap-4'>
-          {data.map((item, index) => (
-            <div key={index} className='flex items-center gap-3'>
-              <CustomAvatar variant='rounded' skin='light' color={item.color}>
-                <i className={item.icon}></i>
-              </CustomAvatar>
-              <div className='text-start'>
-                <Typography variant='h5' className='leading-5'>
-                  {item.stats}
-                </Typography>
-                <Typography className='text-[10pt]'>{item.title}</Typography>
-              </div>
+    <div className='fixed bottom-0 left-0 right-0'>
+      <div className='md:max-is-[550px] mlb-0 mli-auto text-center'>
+        <Card style={{ borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}>
+          <CardContent className='p-3'>
+            <div className='flex justify-around gap-4'>
+              {data.map((item, index) => (
+                <div
+                  key={index}
+                  className='flex flex-col items-center gap-2'
+                  onClick={() => router.push(item.path)}>
+                  <CustomAvatar variant='rounded' skin='light' color='primary'>
+                    <i className={item.icon}></i>
+                  </CustomAvatar>
+                  <Typography className='leading-2 text-[9pt] font-semibold'>
+                    {item.label}
+                  </Typography>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
   )
 }
 
