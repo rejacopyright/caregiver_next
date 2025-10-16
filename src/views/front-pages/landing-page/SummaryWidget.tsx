@@ -13,21 +13,21 @@ type DataType = {
 
 const data: DataType[] = [
   {
-    stats: '8,458',
+    stats: '12',
     color: 'primary',
-    title: 'Customers',
-    icon: 'ri-user-star-line',
+    title: `Today's Upcoming Schedule`,
+    icon: 'ri-calendar-schedule-line',
   },
   {
-    stats: '$28.5k',
-    color: 'warning',
-    icon: 'ri-pie-chart-2-line',
-    title: 'Total Profit',
+    stats: '2',
+    color: 'success',
+    icon: 'ri-calendar-check-line',
+    title: `Today's Completed Schedule`,
   },
   {
-    color: 'info',
-    stats: '2,450k',
-    title: 'Transactions',
+    stats: '4',
+    color: 'error',
+    title: `Missed Schedule`,
     icon: 'ri-arrow-left-right-line',
   },
 ]
@@ -36,18 +36,20 @@ const SummaryWidget = () => {
   return (
     <Card>
       <CardContent>
-        <div className='flex flex-wrap justify-between gap-4'>
+        <div className='flex flex-wrap justify-between gap-3'>
           {data.map((item, index) => (
-            <div key={index} className='flex items-center gap-3'>
-              <CustomAvatar variant='rounded' skin='light' color={item.color}>
-                <i className={item.icon}></i>
-              </CustomAvatar>
-              <div className='text-start'>
-                <Typography variant='h5' className='leading-5'>
+            <div className='text-start flex-1 md:flex-none' key={index}>
+              <div className='flex items-center justify-start flex-1 gap-2'>
+                <div className='text-start'>
+                  <CustomAvatar variant='rounded' skin='light' color={item.color}>
+                    <i className={item.icon} />
+                  </CustomAvatar>
+                </div>
+                <Typography variant='h4' className='text-primary'>
                   {item.stats}
                 </Typography>
-                <Typography className='text-[10pt]'>{item.title}</Typography>
               </div>
+              <Typography className='text-[8pt] mt-1 text-black'>{item.title}</Typography>
             </div>
           ))}
         </div>

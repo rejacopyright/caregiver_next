@@ -59,7 +59,7 @@ const data: DataType[] = [
   },
 ]
 
-const ScedhuleWidget = () => {
+const ScheduleWidget = () => {
   return (
     <Card>
       <div className='flex items-center justify-between px-5 pt-5'>
@@ -100,4 +100,4 @@ const ScedhuleWidget = () => {
   )
 }
 
-export default ScedhuleWidget
+export default ScheduleWidget

@@ -16,10 +16,10 @@ interface Props {
 
 const FrontProvider = ({ mode, children }: Props) => {
   const ref = useRef<null | HTMLDivElement>(null)
-  const scedhuleBgLight = '/images/front-pages/landing-page/hero-bg-light.png'
-  const scedhuleBgDark = '/images/front-pages/landing-page/hero-bg-dark.png'
+  const scheduleBgLight = '/images/front-pages/landing-page/hero-bg-light.png'
+  const scheduleBgDark = '/images/front-pages/landing-page/hero-bg-dark.png'
 
-  const scedhuleBg = useImageVariant(mode, scedhuleBgLight, scedhuleBgDark)
+  const scheduleBg = useImageVariant(mode, scheduleBgLight, scheduleBgDark)
 
   const { updatePageSettings } = useSettings()
 
@@ -35,7 +35,7 @@ const FrontProvider = ({ mode, children }: Props) => {
       id='home'
       ref={ref}
       className='relative overflow-hidden pbs-[35px] -mbs-[70px] bg-backgroundPaper z-[1] min-h-[100vh]'>
-      <img src={scedhuleBg} alt='' className={styles.heroSectionBg} />
+      <img src={scheduleBg} alt='' className={styles.heroSectionBg} />
       <div className={clsx('pbs-16 overflow-hidden', frontCommonStyles.layoutSpacing)}>
         <div className='md:max-is-[550px] mlb-0 mli-auto text-center mb-35'>{children}</div>
       </div>

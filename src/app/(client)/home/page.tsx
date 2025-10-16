@@ -1,4 +1,5 @@
-import ScedhuleWidget from '@views/front-pages/landing-page/ScheduleWidget'
+import InProgressCard from '@views/front-pages/landing-page/InProgressCard'
+import ScheduleWidget from '@views/front-pages/landing-page/ScheduleWidget'
 import SummaryWidget from '@views/front-pages/landing-page/SummaryWidget'
 
 const Index = async () => {
@@ -6,7 +7,9 @@ const Index = async () => {
     <>
       <SummaryWidget />
       <div className='my-3' />
-      <ScedhuleWidget />
+      <InProgressCard />
+      <div className='my-3' />
+      <ScheduleWidget />
     </>
   )
 }
