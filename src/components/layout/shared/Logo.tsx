@@ -7,7 +7,7 @@ import { type CSSProperties, useEffect, useRef } from 'react'
 import themeConfig from '@configs/themeConfig'
 import { useSettings } from '@core/hooks/useSettings'
 // Component Imports
-import MaterializeLogo from '@core/svg/Logo'
+import MyLogo from '@core/svg/Logo'
 // Third-party Imports
 import styled from '@emotion/styled'
 // Type Imports
@@ -67,7 +67,7 @@ const Logo = ({ color }: { color?: CSSProperties['color'] }) => {
 
   return (
     <div className='flex items-center min-bs-[24px]'>
-      <MaterializeLogo />
+      <MyLogo />
       <LogoText
         color={color}
         ref={logoTextRef}

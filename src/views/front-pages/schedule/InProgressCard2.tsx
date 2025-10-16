@@ -5,35 +5,29 @@ import CardContent from '@mui/material/CardContent'
 import LinearProgress from '@mui/material/LinearProgress'
 import Typography from '@mui/material/Typography'
 
-const InProgressCard = () => {
+const InProgressCard2 = () => {
   return (
     <Card className='max-lg:bs-full'>
       <CardContent className='flex flex-col pbs-0.5 pbe-2 bg-gradient-to-bl from-indigo-500 to-purple-400'>
-        <div className='flex items-center justify-center h-[85px]'>
-          <Typography variant='h3' className='text-white font-bold'>
-            01 : 20 : 59
-          </Typography>
-        </div>
-        <div className='flex items-start justify-start gap-4'>
-          <CustomAvatar
-            variant='rounded'
-            src='/images/avatars/1.png'
-            className='w-[100px] h-[100px] md:w-[65px] md:h-[65px]'
-          />
-          <div className='flex items-start flex-col gap-0.5 xxx:flex-1'>
-            <Typography variant='h4' className='font-medium text-white -my-[5px]'>
+        <div className='flex items-start justify-start gap-4 pt-5'>
+          <CustomAvatar variant='rounded' src='/images/avatars/1.png' size={75} className='' />
+          <div className='flex items-start flex-col gap-0.5'>
+            <Typography variant='h3' className='text-white font-bold leading-8'>
+              01 : 20 : 59
+            </Typography>
+            <Typography variant='h5' className='font-medium text-white -mb-[5px]'>
               Patient Name
             </Typography>
             <div className='flex justify-start gap-1 mt-2'>
-              <i className='ri-map-pin-fill text-[11pt] md:text-[15pt] text-white' />
-              <Typography className='text-[10pt] md:text-[12pt] text-white text-wrap text-start'>
+              <i className='ri-map-pin-fill text-[10pt] text-white mt-[2px]' />
+              <Typography className='text-[10pt] text-white text-wrap text-start'>
                 Samarang St, Garut, West Java
               </Typography>
             </div>
           </div>
         </div>
-        <div className='flex flex-col gap-1 plb-4'>
-          <div className='flex items-center gap-2 mt-2'>
+        <div className='flex flex-col gap-1 plb-2'>
+          <div className='flex items-center justify-end gap-2 mt-2'>
             <i className='ri-time-fill text-[11pt] text-white' />
             <Typography className='text-[11pt] text-white font-medium'>11:30 - 12:00</Typography>
           </div>
@@ -57,4 +51,4 @@ const InProgressCard = () => {
   )
 }
 
-export default InProgressCard
+export default InProgressCard2

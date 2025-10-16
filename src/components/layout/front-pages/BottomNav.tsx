@@ -41,7 +41,7 @@ const BottomNav = () => {
   const path = usePathname()
 
   return (
-    <div className='fixed bottom-0 left-0 right-0'>
+    <div className='fixed bottom-0 left-0 right-0 z-50'>
       <div className='md:max-is-[550px] mlb-0 mli-auto text-center'>
         <Card style={{ borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}>
           <CardContent className='p-3'>

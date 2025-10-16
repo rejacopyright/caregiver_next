@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import CustomAvatar from '@core/components/mui/Avatar'
 import type { ThemeColor } from '@core/types'
+import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Chip from '@mui/material/Chip'
@@ -65,7 +66,7 @@ const ScheduleWidget = () => {
       <div className='flex items-center justify-between px-5 pt-5'>
         <div className='font-semibold text-xl'>Schedule</div>
         <Link
-          href='/'
+          href='/schedule'
           className='font-medium text-[11pt] text-blue-400 hover:text-blue-600 hover:underline flex items-center gap-2'>
           <div className=''>See All</div>
           <i className='ri-arrow-right-s-line' />
@@ -73,7 +74,7 @@ const ScheduleWidget = () => {
       </div>
       <CardContent className='flex flex-col gap-[26.41px]'>
         {data.map((item, index) => (
-          <div key={index} className='flex gap-4'>
+          <Button key={index} className='flex items-start gap-4'>
             <CustomAvatar variant='rounded' src={item.avatarSrc} size={40} className='mt-1' />
             <div className='flex justify-between items-center is-full flex-wrap gap-x-4 gap-y-2'>
               <div className='flex items-start flex-col gap-0.5'>
@@ -93,7 +94,7 @@ const ScheduleWidget = () => {
               </div>
               <Chip label={item.chipLabel} color={item.chipColor} size='small' variant='tonal' />
             </div>
-          </div>
+          </Button>
         ))}
       </CardContent>
     </Card>

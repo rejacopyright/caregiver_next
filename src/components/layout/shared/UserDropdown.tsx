@@ -116,7 +116,7 @@ const UserDropdown = () => {
                       <Typography variant='body2' className='font-medium' color='text.primary'>
                         John Doe
                       </Typography>
-                      <Typography variant='caption'>admin@materialize.com</Typography>
+                      <Typography variant='caption'>admin@mmail.com</Typography>
                     </div>
                   </div>
                   <Divider className='mlb-1' />
