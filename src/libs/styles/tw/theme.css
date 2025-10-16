@@ -1,0 +1,71 @@
+@theme {
+  /* DEFAULTS */
+  --default-border-color: var(--border-color, currentColor);
+
+  /* BREAKPOINTS */
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 900px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1536px;
+  --breakpoint-2xl: 1920px;
+
+  /* SHADOW */
+  --shadow-xs: var(--mui-customShadows-xs);
+  --shadow-sm: var(--mui-customShadows-sm);
+  --shadow-DEFAULT: var(--mui-customShadows-md);
+  --shadow-md: var(--mui-customShadows-md);
+  --shadow-lg: var(--mui-customShadows-lg);
+  --shadow-xl: var(--mui-customShadows-xl);
+
+  /* Z-INDEX */
+  --z-index-header: var(--header-z-index);
+  --z-index-footer: var(--footer-z-index);
+  --z-index-customizer: var(--customizer-z-index);
+  --z-index-search: var(--search-z-index);
+  --z-index-drawer: var(--drawer-z-index);
+
+  /* BORDER RADIUS */
+  --radius-none: 0px;
+  --radius-xs: var(--mui-shape-customBorderRadius-xs);
+  --radius-sm: var(--mui-shape-customBorderRadius-sm);
+  --radius-DEFAULT: 0.625rem;
+  --radius-md: var(--mui-shape-customBorderRadius-md);
+  --radius-lg: var(--mui-shape-customBorderRadius-lg);
+  --radius-xl: var(--mui-shape-customBorderRadius-xl);
+  --radius-2xl: 0.75rem;
+  --radius-3xl: 1rem;
+  --radius-4xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* COLOR */
+  --color-primaryLight: var(--mui-palette-primary-lightOpacity);
+  --color-primary: var(--primary-color);
+  --color-primaryLight: var(--mui-palette-primary-lightOpacity);
+  --color-primaryLighter: var(--mui-palette-primary-lighterOpacity);
+  --color-primaryDark: var(--mui-palette-primary-dark);
+  --color-secondary: var(--mui-palette-secondary-main);
+  --color-error: var(--mui-palette-error-main);
+  --color-errorLight: var(--mui-palette-error-lightOpacity);
+  --color-errorLighter: var(--mui-palette-error-lighterOpacity);
+  --color-warning: var(--mui-palette-warning-main);
+  --color-info: var(--mui-palette-info-main);
+  --color-infoLight: var(--mui-palette-info-lightOpacity);
+  --color-infoLighter: var(--mui-palette-info-lighterOpacity);
+  --color-success: var(--mui-palette-success-main);
+  --color-successLight: var(--mui-palette-success-lightOpacity);
+  --color-textPrimary: var(--mui-palette-text-primary);
+  --color-textSecondary: var(--mui-palette-text-secondary);
+  --color-textDisabled: var(--mui-palette-text-disabled);
+  --color-actionActive: var(--mui-palette-action-active);
+  --color-actionHover: var(--mui-palette-action-hover);
+  --color-actionSelected: var(--mui-palette-action-selected);
+  --color-actionFocus: var(--mui-palette-action-focus);
+  --color-backgroundPaper: var(--mui-palette-background-paper);
+  --color-backgroundDefault: var(--mui-palette-background-default);
+  --color-track: var(--mui-palette-customColors-trackBg);
+  --color-backdrop: var(--backdrop-color);
+  --color-facebook: #4267b2;
+  --color-twitter: #1da1f2;
+  --color-linkedin: #007bb6;
+  --color-googlePlus: #db4437;
+}

@@ -1,0 +1,54 @@
+{
+  // "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "incremental": true,
+    "target": "ESNext",
+    "downlevelIteration": true,
+    "lib": [ "DOM", "DOM.Iterable", "ESNext" ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [ { "name": "next" } ],
+    "baseUrl": "src",
+    "declaration": true,
+    "paths": {
+      "@core/*": [ "@core/*" ],
+      "@layouts/*": [ "@layouts/*" ],
+      "@menu/*": [ "@menu/*" ],
+      "@assets/*": [ "assets/*" ],
+      "@components/*": [ "components/*" ],
+      "@configs/*": [ "configs/*" ],
+      "@utils/*": [ "utils/*" ],
+      "@hocs/*": [ "hocs/*" ],
+      "@ts/*": [ "types/*" ],
+      "@redux": [ "redux-store" ],
+      "@redux/*": [ "redux-store/*" ],
+      "@contexts/*": [ "contexts/*" ],
+      "@styles/*": [ "libs/styles/*" ],
+      "@lang/*": [ "data/dictionaries/*" ],
+      "@server/*": [ "app/server/*" ],
+      "@views/*": [ "views/*" ],
+      "@/*": [ "*" ]
+    }
+  },
+  "include": [
+    "src",
+    "next.config.ts",
+    "tailwind.config.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+  ]
+}
