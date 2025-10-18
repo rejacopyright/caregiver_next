@@ -1,7 +1,9 @@
 'use client'
 
 import { Fragment, SyntheticEvent, useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
+import { getAllSchedule, getTodaySchedule } from '@api/schedule'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
@@ -9,6 +11,8 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Divider from '@mui/material/Divider'
 import Tab from '@mui/material/Tab'
+import { formatISO, randomNumber } from '@utils/fn'
+import { parse, stringify } from 'qs'
 
 import ScheduleCard from './ScheduleCard'
 
@@ -16,6 +20,7 @@ type ScheduleItem = {
   name: string
   address: string
   avatar?: string
+  [key: string]: any
 }
 
 export type Data = {
@@ -24,7 +29,7 @@ export type Data = {
   missed: ScheduleItem[]
 }
 
-const data: Data = {
+const _data: Data = {
   upcoming: [
     {
       name: 'Micheal Hughes',
@@ -94,10 +99,30 @@ const data: Data = {
 }
 
 const TabSchedule = () => {
+  const router = useRouter()
+  const pathname: any = usePathname()
+  const searchParamsFn = useSearchParams()
+  const searchParams = parse(searchParamsFn.toString() || '', { ignoreQueryPrefix: true })
+
   const [value, setValue] = useState<keyof Data>('upcoming')
+  const isAllDay = searchParams?.isToday === 'false'
+
+  const { data } = isAllDay
+    ? getAllSchedule({ status: value })
+    : getTodaySchedule({ status: value })
+
+  const scheduleData = data?.data || []
+
+  const upsertParams = (params: object) => {
+    const resParams = stringify({ ...searchParams, ...params }, { encode: false })
+
+    router.replace(`${pathname}?${resParams}`)
+  }
 
   const handleChange = (event: SyntheticEvent, newValue: keyof Data) => {
     setValue(newValue)
+    upsertParams({ tab: newValue })
+    // router.replace(`/schedule`)
   }
 
   return (
@@ -110,13 +135,24 @@ const TabSchedule = () => {
         </TabList>
         <TabPanel value={value} className='pbs-0'>
           <CardContent>
-            {data[value].map((item: ScheduleItem, index: number) => {
+            {scheduleData.map((item: ScheduleItem, index: number) => {
+              const avatar = `/images/avatars/${randomNumber(1, 8)}.png`
+              const formattedDate = formatISO(item.shiftStart, 'dd MMM')
+              const formattedTimeStart = formatISO(item.shiftStart, 'HH:mm')
+              const formattedTimeEnd = formatISO(item.shiftEnd, 'HH:mm')
+
+              const shiftDate = `${formattedDate} | ${formattedTimeStart}-${formattedTimeEnd}`
+
               return (
                 <Fragment key={index}>
-                  <ScheduleCard title={item.name} avatar={item?.avatar} status={value} />
-                  {index !== data[value as keyof Data].length - 1 && (
-                    <Divider className='mlb-2 border-dashed' />
-                  )}
+                  <ScheduleCard
+                    title={item.clientName}
+                    avatar={avatar}
+                    status={value}
+                    address={item.address}
+                    time={shiftDate}
+                  />
+                  {index !== scheduleData.length - 1 && <Divider className='mlb-2 border-dashed' />}
                 </Fragment>
               )
             })}

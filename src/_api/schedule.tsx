@@ -1,10 +1,18 @@
 import axios from '@axios'
 import { useQuery } from '@tanstack/react-query'
 
-export const getTodaySchedule = () => {
+export const getAllSchedule = (params?: any) => {
   return useQuery({
-    queryKey: ['getTodaySchedule'],
-    queryFn: () => axios.get('schedule/today'),
+    queryKey: ['getAllSchedule', params],
+    queryFn: () => axios.get('schedule', { params }),
+    select: ({ data }) => data?.data || { data: [] },
+  })
+}
+
+export const getTodaySchedule = (params?: any) => {
+  return useQuery({
+    queryKey: ['getTodaySchedule', params],
+    queryFn: () => axios.get('schedule/today', { params }),
     select: ({ data }) => data?.data || { data: [] },
   })
 }
