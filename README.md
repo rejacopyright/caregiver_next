@@ -32,6 +32,46 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+---
+
+## 🔄 Resetting Data
+
+If you need to **reset your data**, there are two ways to do it:
+
+1. **From the backend project**  
+   Go to your backend project folder and run the following command:
+
+   ```bash
+   yarn seed
+   ```
+
+   This will re-seed the database with default data.
+
+2. **From the frontend UI**
+   - Open the app in your browser
+   - Go to the **Profile** page
+   - Click the **Reset Data** button
+
+Either method will restore your data to its initial state.
+
+---
+
+## 📱 App Screenshots
+
+### 🧭 Mobile View
+
+| Home                                              | Schedule                                                  | Task                                              | Profile                                                 |
+| ------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------- |
+| ![Home Mobile](./public/readme/1_home_mobile.png) | ![Schedule Mobile](./public/readme/3_schedule_mobile.png) | ![Task Mobile](./public/readme/4_task_mobile.png) | ![Profile Mobile](./public/readme/5_profile_mobile.png) |
+
+### 💻 Desktop View
+
+| Home                                                | Schedule                                                    | Task                                                | Profile                                                   |
+| --------------------------------------------------- | ----------------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------------- |
+| ![Home Desktop](./public/readme/6_home_desktop.png) | ![Schedule Desktop](./public/readme/7_schedule_desktop.png) | ![Task Desktop](./public/readme/8_task_desktop.png) | ![Profile Desktop](./public/readme/9_profile_desktop.png) |
+
+---
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -40,6 +80,8 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+---
 
 ## Deploy on Vercel
 
