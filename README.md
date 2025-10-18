@@ -1,8 +1,22 @@
+# Next.js Project
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+### 1. Setup Environment Variables
+
+Create a `.env` file in the root directory of your project and add the following line:
+
+```bash
+NEXT_PUBLIC_API=http://localhost:4000
+```
+
+> This variable is used to define the base URL for your API requests.
+
+### 2. Run the Development Server
+
+After setting up your `.env` file, start the development server by running one of the following commands:
 
 ```bash
 npm run dev
@@ -12,7 +26,7 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
