@@ -46,11 +46,6 @@ const InProgressCard = ({ detail }: any) => {
       const percent = Math.min((elapsedSeconds / totalSeconds) * 100, 100)
 
       setProgress(percent)
-
-      if (remainingSeconds <= 0) {
-        clearInterval(interval)
-        setCountdown('00 : 00 : 00')
-      }
     }
 
     tick()
