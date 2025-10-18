@@ -36,7 +36,7 @@ const Header = ({ mode }: { mode: Mode }) => {
           [styles.headerScrolled]: trigger,
         })}>
         <div className={clsx(frontLayoutClasses.navbarContent, styles.navbarContent)}>
-          <div className='flex items-center gap-10'>
+          <div className='flex items-center gap-10 py-2'>
             <Link href={landingUrl}>
               <Logo />
             </Link>

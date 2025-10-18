@@ -36,6 +36,8 @@
       "@lang/*": [ "data/dictionaries/*" ],
       "@server/*": [ "app/server/*" ],
       "@views/*": [ "views/*" ],
+      "@axios": [ "libs/axios.ts" ],
+      "@api/*": [ "_api/*" ],
       "@/*": [ "*" ]
     }
   },

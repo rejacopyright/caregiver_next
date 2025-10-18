@@ -2,6 +2,7 @@ import { Locale } from '@configs/i18n'
 import { LangProvider } from '@contexts/langContext'
 import type { ChildrenType } from '@core/types'
 import { getSystemMode } from '@core/utils/serverHelpers'
+import { QueryProvider } from '@hocs/ReactQueryProvider'
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript'
 import { getLang } from '@utils/getLang'
 
@@ -25,7 +26,9 @@ const RootLayout = async (props: ChildrenType & { params: Promise<{ lang: Locale
     <html id='__next' lang={lang} dir={direction} suppressHydrationWarning>
       <body className='flex is-full min-bs-full flex-auto flex-col'>
         <InitColorSchemeScript attribute='data' defaultMode={systemMode} />
-        <LangProvider>{children}</LangProvider>
+        <QueryProvider>
+          <LangProvider>{children}</LangProvider>
+        </QueryProvider>
       </body>
     </html>
   )

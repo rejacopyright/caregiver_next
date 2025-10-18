@@ -86,7 +86,7 @@ const FrontMenu = (props: Props) => {
         color='text.primary'
         component={Link}
         href={landingUrl}
-        className={clsx('font-medium plb-3 pli-1.5 hover:text-primary', {
+        className={clsx('font-medium plb-3 pli-1.5 hover:text-primary hidden', {
           'text-primary': !intersections.features && pathname === landingUrl,
         })}>
         Home
@@ -95,7 +95,7 @@ const FrontMenu = (props: Props) => {
         color='text.primary'
         component={Link}
         href={`${landingUrl}#features`}
-        className={clsx('font-medium plb-3 pli-1.5 hover:text-primary', {
+        className={clsx('font-medium plb-3 pli-1.5 hover:text-primary hidden', {
           'text-primary': intersections.features,
         })}>
         Features
