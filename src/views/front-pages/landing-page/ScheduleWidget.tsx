@@ -1,4 +1,6 @@
+'use client'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import CustomAvatar from '@core/components/mui/Avatar'
 import type { ThemeColor } from '@core/types'
@@ -19,50 +21,9 @@ type DataType = {
   [key: string]: any
 }
 
-// const data: DataType[] = [
-//   {
-//     avatarSrc: '/images/avatars/4.png',
-//     title: 'Marry Jane',
-//     date: '21 Jul | 08:20-10:30',
-//     loc: 'Samarang St, Garut, West Java',
-//     chipLabel: 'Business',
-//     chipColor: 'primary',
-//   },
-//   {
-//     avatarSrc: '/images/avatars/5.png',
-//     title: 'John Doe',
-//     date: '24 Jul | 11:30-12:00',
-//     loc: 'Samarang St, Garut, West Java',
-//     chipLabel: 'Meditation',
-//     chipColor: 'success',
-//   },
-//   {
-//     avatarSrc: '/images/avatars/3.png',
-//     title: 'Reja Jamil',
-//     date: '28 Jul | 05:00-6:45',
-//     loc: 'Samarang St, Garut, West Java',
-//     chipLabel: 'Dinner',
-//     chipColor: 'warning',
-//   },
-//   {
-//     avatarSrc: '/images/avatars/2.png',
-//     title: 'Mark Lee',
-//     date: '03 Aug | 07:00-8:30',
-//     loc: 'Samarang St, Garut, West Java',
-//     chipLabel: 'Meetup',
-//     chipColor: 'secondary',
-//   },
-//   {
-//     avatarSrc: '/images/avatars/8.png',
-//     title: 'Robert',
-//     date: '14 Aug | 04:15-05:30',
-//     loc: 'Samarang St, Garut, West Java',
-//     chipLabel: 'Cancelled',
-//     chipColor: 'error',
-//   },
-// ]
-
 const ScheduleWidget = ({ data }: { data: DataType[] }) => {
+  const router = useRouter()
+
   return (
     <Card>
       <div className='flex items-center justify-between px-5 pt-5'>
@@ -90,7 +51,10 @@ const ScheduleWidget = ({ data }: { data: DataType[] }) => {
           const badgeColor = chipColor[status]
 
           return (
-            <Button key={index} className='flex items-start gap-4'>
+            <Button
+              key={index}
+              className='flex items-start gap-4'
+              onClick={() => router.push(`/schedule/${item?.id}`)}>
               <CustomAvatar variant='rounded' src={avatar} size={40} skin='light' color='primary'>
                 {!avatar && <i className='ri-user-3-line text-3xl opacity-50' />}
               </CustomAvatar>
@@ -105,7 +69,7 @@ const ScheduleWidget = ({ data }: { data: DataType[] }) => {
                   </div>
                   <div className='flex items-center gap-1 mt-2'>
                     <i className='ri-map-pin-fill text-[10pt] text-red-600' />
-                    <Typography className='text-[10pt] text-gray-400 leading-1'>
+                    <Typography className='text-[10pt] text-gray-400 text-start'>
                       {item.address}
                     </Typography>
                   </div>

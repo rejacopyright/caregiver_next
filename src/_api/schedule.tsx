@@ -1,5 +1,5 @@
 import axios from '@axios'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 export const getAllSchedule = (params?: any) => {
   return useQuery({
@@ -14,5 +14,48 @@ export const getTodaySchedule = (params?: any) => {
     queryKey: ['getTodaySchedule', params],
     queryFn: () => axios.get('schedule/today', { params }),
     select: ({ data }) => data?.data || { data: [] },
+  })
+}
+
+export const getDetailSchedule = (id?: string) => {
+  return useQuery({
+    queryKey: ['getDetailSchedule', id],
+    queryFn: () => axios.get(`schedule/${id}`),
+    enabled: Boolean(id),
+    select: ({ data }) => data?.data || {},
+  })
+}
+
+export const getActiveSchedule = () => {
+  return useQuery({
+    queryKey: ['getActiveSchedule'],
+    queryFn: () => axios.get(`schedule/active`),
+    select: ({ data }) => data?.data || {},
+  })
+}
+
+export const clockIn = (id: string) => {
+  const qc = useQueryClient()
+
+  return useMutation({
+    mutationFn: (data: any) => axios.post(`schedule/${id}/start`, data),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['getAllSchedule'], exact: false })
+      qc.invalidateQueries({ queryKey: ['getTodaySchedule'], exact: false })
+      qc.invalidateQueries({ queryKey: ['getActiveSchedule'], exact: false })
+    },
+  })
+}
+
+export const clockOut = (id: string) => {
+  const qc = useQueryClient()
+
+  return useMutation({
+    mutationFn: (data: any) => axios.post(`schedule/${id}/end`, data),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['getAllSchedule'], exact: false })
+      qc.invalidateQueries({ queryKey: ['getTodaySchedule'], exact: false })
+      qc.invalidateQueries({ queryKey: ['getActiveSchedule'], exact: false })
+    },
   })
 }

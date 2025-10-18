@@ -14,6 +14,7 @@ import Tab from '@mui/material/Tab'
 import { formatISO, randomNumber } from '@utils/fn'
 import { parse, stringify } from 'qs'
 
+import { ModalClockIn } from './ModalClockIn'
 import ScheduleCard from './ScheduleCard'
 
 type ScheduleItem = {
@@ -104,7 +105,14 @@ const TabSchedule = () => {
   const searchParamsFn = useSearchParams()
   const searchParams = parse(searchParamsFn.toString() || '', { ignoreQueryPrefix: true })
 
-  const [value, setValue] = useState<keyof Data>('upcoming')
+  const [tmpData, setTmpData] = useState<any>()
+  const [showModalCheckIn, setShowModalCheckIn] = useState<boolean>(false)
+
+  const initialTabValue = searchParams?.tab
+    ? (searchParams?.tab?.toString() as keyof Data)
+    : 'upcoming'
+
+  const [value, setValue] = useState<keyof Data>(initialTabValue)
   const isAllDay = searchParams?.isToday === 'false'
 
   const { data } = isAllDay
@@ -126,40 +134,53 @@ const TabSchedule = () => {
   }
 
   return (
-    <Card>
-      <TabContext value={value}>
-        <TabList variant='fullWidth' onChange={handleChange} aria-label='full width tabs example'>
-          <Tab value='upcoming' label='Upcoming' />
-          <Tab value='completed' label='Completed' />
-          <Tab value='missed' label='Missed' />
-        </TabList>
-        <TabPanel value={value} className='pbs-0'>
-          <CardContent>
-            {scheduleData.map((item: ScheduleItem, index: number) => {
-              const avatar = `/images/avatars/${randomNumber(1, 8)}.png`
-              const formattedDate = formatISO(item.shiftStart, 'dd MMM')
-              const formattedTimeStart = formatISO(item.shiftStart, 'HH:mm')
-              const formattedTimeEnd = formatISO(item.shiftEnd, 'HH:mm')
+    <>
+      <Card>
+        <TabContext value={value}>
+          <TabList variant='fullWidth' onChange={handleChange} aria-label='full width tabs example'>
+            <Tab value='upcoming' label='Upcoming' />
+            <Tab value='completed' label='Completed' />
+            <Tab value='missed' label='Missed' />
+          </TabList>
+          <TabPanel value={value} className='pbs-0'>
+            <CardContent>
+              {scheduleData.map((item: ScheduleItem, index: number) => {
+                const avatar = `/images/avatars/${randomNumber(1, 8)}.png`
+                const formattedDate = formatISO(item.shiftStart, 'dd MMM')
+                const formattedTimeStart = formatISO(item.shiftStart, 'HH:mm')
+                const formattedTimeEnd = formatISO(item.shiftEnd, 'HH:mm')
 
-              const shiftDate = `${formattedDate} | ${formattedTimeStart}-${formattedTimeEnd}`
+                const shiftDate = `${formattedDate} | ${formattedTimeStart}-${formattedTimeEnd}`
 
-              return (
-                <Fragment key={index}>
-                  <ScheduleCard
-                    title={item.clientName}
-                    avatar={avatar}
-                    status={value}
-                    address={item.address}
-                    time={shiftDate}
-                  />
-                  {index !== scheduleData.length - 1 && <Divider className='mlb-2 border-dashed' />}
-                </Fragment>
-              )
-            })}
-          </CardContent>
-        </TabPanel>
-      </TabContext>
-    </Card>
+                return (
+                  <Fragment key={index}>
+                    <ScheduleCard
+                      id={item.id}
+                      title={item.clientName}
+                      avatar={avatar}
+                      status={value}
+                      address={item.address}
+                      time={shiftDate}
+                      onClockIn={() => {
+                        try {
+                          setTmpData(item)
+                        } finally {
+                          setShowModalCheckIn(true)
+                        }
+                      }}
+                    />
+                    {index !== scheduleData.length - 1 && (
+                      <Divider className='mlb-2 border-dashed' />
+                    )}
+                  </Fragment>
+                )
+              })}
+            </CardContent>
+          </TabPanel>
+        </TabContext>
+      </Card>
+      <ModalClockIn show={showModalCheckIn} setShow={setShowModalCheckIn} data={tmpData} />
+    </>
   )
 }
 

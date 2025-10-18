@@ -16,7 +16,9 @@ const SwitchDate = () => {
   const searchParamsFn = useSearchParams()
   const searchParams = parse(searchParamsFn.toString() || '', { ignoreQueryPrefix: true })
 
-  const [activeTab, setActiveTab] = useState('today')
+  const initialTabValue = searchParams?.isToday === 'false' ? 'all' : 'today'
+
+  const [activeTab, setActiveTab] = useState(initialTabValue)
 
   const upsertParams = (params: object) => {
     const resParams = stringify({ ...searchParams, ...params }, { encode: false })

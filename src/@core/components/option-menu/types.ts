@@ -20,6 +20,7 @@ export type OptionDividerType = {
   menuItemProps?: never
 }
 export type OptionMenuItemType = {
+  id?: string
   text: ReactNode
   icon?: ReactNode
   linkProps?: BoxProps<'a'>
@@ -38,4 +39,5 @@ export type OptionsMenuType = {
   options: OptionType[]
   leftAlignMenu?: boolean
   iconButtonProps?: IconButtonProps
+  onClick?: (e: any) => void
 }

@@ -1,11 +1,12 @@
 'use client'
-import { getTodaySchedule } from '@api/schedule'
+import { getActiveSchedule, getTodaySchedule } from '@api/schedule'
 import InProgressCard from '@views/front-pages/landing-page/InProgressCard'
 import ScheduleWidget from '@views/front-pages/landing-page/ScheduleWidget'
 import SummaryWidget from '@views/front-pages/landing-page/SummaryWidget'
 
 const Index = () => {
   const { data } = getTodaySchedule()
+  const { data: activeSchedule } = getActiveSchedule()
 
   const scheduleData = data?.data || []
 
@@ -13,7 +14,7 @@ const Index = () => {
     <>
       <SummaryWidget />
       <div className='my-3' />
-      <InProgressCard />
+      {Boolean(activeSchedule?.id) && <InProgressCard detail={activeSchedule} />}
       <div className='my-3' />
       <ScheduleWidget data={scheduleData} />
     </>

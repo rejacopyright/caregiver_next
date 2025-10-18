@@ -53,7 +53,15 @@ const MenuItemWrapper = ({
 
 const OptionMenu = (props: OptionsMenuType) => {
   // Props
-  const { tooltipProps, icon, iconClassName, options, leftAlignMenu, iconButtonProps } = props
+  const {
+    tooltipProps,
+    icon,
+    iconClassName,
+    options,
+    leftAlignMenu,
+    iconButtonProps,
+    onClick = () => '',
+  } = props
 
   // States
   const [open, setOpen] = useState(false)
@@ -117,6 +125,7 @@ const OptionMenu = (props: OptionsMenuType) => {
                           {...option.menuItemProps}
                           {...(option.href && { className: 'p-0' })}
                           onClick={(e) => {
+                            onClick(option)
                             handleClose(e)
                             option.menuItemProps && option.menuItemProps.onClick
                               ? option.menuItemProps.onClick(e)
