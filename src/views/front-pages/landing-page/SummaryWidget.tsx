@@ -1,43 +1,43 @@
 import CustomAvatar from '@core/components/mui/Avatar'
-import type { ThemeColor } from '@core/types'
+import { ThemeColor } from '@core/types'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
 type DataType = {
+  id: string
   icon: string
-  stats: string
   title: string
   color: ThemeColor
 }
 
-const data: DataType[] = [
+const dataMap: DataType[] = [
   {
-    stats: '12',
+    id: 'upcoming',
     color: 'primary',
     title: `Today's Upcoming Schedule`,
     icon: 'ri-calendar-schedule-line',
   },
   {
-    stats: '2',
+    id: 'completed',
     color: 'success',
     icon: 'ri-calendar-check-line',
     title: `Today's Completed Schedule`,
   },
   {
-    stats: '4',
+    id: 'missed',
     color: 'error',
     title: `Missed Schedule`,
     icon: 'ri-arrow-left-right-line',
   },
 ]
 
-const SummaryWidget = () => {
+const SummaryWidget = ({ data }: any) => {
   return (
     <Card>
       <CardContent>
         <div className='flex flex-wrap justify-between gap-3'>
-          {data.map((item, index) => (
+          {dataMap?.map((item, index: number) => (
             <div className='text-start flex-1 md:flex-none' key={index}>
               <div className='flex items-center justify-start flex-1 gap-2'>
                 <div className='text-start'>
@@ -46,7 +46,7 @@ const SummaryWidget = () => {
                   </CustomAvatar>
                 </div>
                 <Typography variant='h4' className='text-primary'>
-                  {item.stats}
+                  {data?.[item?.id]}
                 </Typography>
               </div>
               <Typography className='text-[8pt] mt-1 text-black'>{item.title}</Typography>

@@ -20,3 +20,14 @@ export const updateTask = (id: string) => {
     },
   })
 }
+
+export const resetAllDatas = () => {
+  const qc = useQueryClient()
+
+  return useMutation({
+    mutationFn: () => axios.post(`developer/database/reset`),
+    onSuccess: () => {
+      qc.invalidateQueries()
+    },
+  })
+}
