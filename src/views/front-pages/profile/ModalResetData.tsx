@@ -20,9 +20,9 @@ export const ModalResetData = ({ show, setShow }: Props) => {
       const res = await mutateAsync()
 
       setShow(false)
-      toast.success(res?.data?.message || 'success')
+      toast.success(res?.data?.message || 'success', { position: 'top-center' })
     } catch (err: any) {
-      toast.error(err?.response?.data?.message || 'Failed to reset')
+      toast.error(err?.response?.data?.message || 'Failed to reset', { position: 'top-center' })
     }
   }
 

@@ -18,7 +18,7 @@ export const ModalClockOut = ({ show, setShow, data }: Props) => {
 
   const handleSubmit = async () => {
     if (!navigator.geolocation) {
-      toast.error('Location must be active')
+      toast.error('Location must be active', { position: 'top-center' })
 
       return
     }
@@ -32,9 +32,11 @@ export const ModalClockOut = ({ show, setShow, data }: Props) => {
           const res = await mutateAsync({ lat, lng })
 
           setShow(false)
-          toast.success(res?.data?.message || 'success')
+          toast.success(res?.data?.message || 'success', { position: 'top-center' })
         } catch (err: any) {
-          toast.error(err?.response?.data?.message || 'Failed to clock-in')
+          toast.error(err?.response?.data?.message || 'Failed to clock-in', {
+            position: 'top-center',
+          })
         }
       },
       () => '',

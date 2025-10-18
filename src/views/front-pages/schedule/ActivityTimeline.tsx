@@ -67,10 +67,10 @@ const ActivityTimeline = ({ data, activeData }: any) => {
     try {
       const res = await mutateAsync({ status: 'NOT_COMPLETED', reason: inputRef?.current?.value })
 
-      toast.success(res?.data?.message || 'Success')
+      toast.success(res?.data?.message || 'Success', { position: 'top-center' })
       setFormReasonIsShow(false)
     } catch (err: any) {
-      toast.error(err?.response?.data?.message || 'Failed to update')
+      toast.error(err?.response?.data?.message || 'Failed to update', { position: 'top-center' })
     }
   }
 
@@ -78,10 +78,10 @@ const ActivityTimeline = ({ data, activeData }: any) => {
     try {
       const res = await mutateAsync({ status: 'COMPLETED' })
 
-      toast.success(res?.data?.message || 'Success')
+      toast.success(res?.data?.message || 'Success', { position: 'top-center' })
       setFormReasonIsShow(false)
     } catch (err: any) {
-      toast.error(err?.response?.data?.message || 'Failed to update')
+      toast.error(err?.response?.data?.message || 'Failed to update', { position: 'top-center' })
     }
   }
 
