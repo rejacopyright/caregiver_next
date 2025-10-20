@@ -110,10 +110,10 @@ const ActivityTimeline = ({ data, activeData }: any) => {
                   <div className='flex items-start justify-between flex-nowrap gap-x-4 mbe-2.5'>
                     <div className='flexs items-end'>
                       <div className='font-medium text-primary'>
-                        {formatISO(item?.createdAt, 'HH:mm') || '-'}
+                        {formatISO(item?.taskTime, 'HH:mm') || '-'}
                       </div>
                       <div className='font-medium text-[8pt]'>
-                        {formatISO(item?.createdAt, 'dd MMM, yyyy') || '-'}
+                        {formatISO(item?.taskTime, 'dd MMM, yyyy') || '-'}
                       </div>
                     </div>
                     <div className='flex items-center gap-2'>
