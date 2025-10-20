@@ -5,8 +5,9 @@ import qs from 'qs'
 
 import useLocation from '@/hooks/useLocation'
 
-export const API_SERVER: string = process.env.NEXT_PUBLIC_API || 'http://localhost:4000'
-// export const API_SERVER: string = process.env.NEXT_PUBLIC_API || 'https://api.pimsclub.id'
+// export const API_SERVER: string = process.env.NEXT_PUBLIC_API || 'http://localhost:4000'
+export const API_SERVER: string =
+  process.env.NEXT_PUBLIC_API || 'https://caregivernode-production.up.railway.app'
 
 const axios = ax.create({
   baseURL: `${API_SERVER + '/api/v1'}/`,

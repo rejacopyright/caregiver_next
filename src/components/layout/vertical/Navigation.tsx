@@ -20,8 +20,6 @@ import { styled, useColorScheme, useTheme } from '@mui/material/styles'
 import { p } from '@utils/fn'
 import type { getDictionary } from '@utils/getDictionary'
 
-import VerticalMenu from './VerticalMenu'
-
 type Props = {
   dictionary: Awaited<ReturnType<typeof getDictionary>>
   mode: Mode
@@ -64,7 +62,7 @@ const MenuToggleSvg = (
 
 const Navigation = (props: Props) => {
   // Props
-  const { dictionary, mode } = props
+  const { dictionary: _dictionary, mode } = props
 
   // Hooks
   const verticalNavOptions = useVerticalNav()
@@ -85,7 +83,7 @@ const Navigation = (props: Props) => {
 
   const isDark = currentMode === 'dark'
 
-  const scrollMenu = (container: any, isPerfectScrollbar: boolean) => {
+  const _scrollMenu = (container: any, isPerfectScrollbar: boolean) => {
     container = isBreakpointReached || !isPerfectScrollbar ? container.target : container
 
     if (shadowRef && container.scrollTop > 0) {
@@ -137,7 +135,6 @@ const Navigation = (props: Props) => {
         )}
       </NavHeader>
       <StyledBoxForShadow ref={shadowRef} />
-      <VerticalMenu dictionary={dictionary} scrollMenu={scrollMenu} />
     </VerticalNav>
   )
 }

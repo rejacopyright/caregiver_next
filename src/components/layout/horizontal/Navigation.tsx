@@ -13,7 +13,6 @@ import clsx from 'clsx'
 import type { getDictionary } from '@/utils/getDictionary'
 
 // Component Imports
-import HorizontalMenu from './HorizontalMenu'
 
 type StyledDivProps = {
   isContentCompact: boolean
@@ -36,7 +35,11 @@ const StyledDiv = styled.div<StyledDivProps>`
   `}
 `
 
-const Navigation = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
+const Navigation = ({
+  dictionary: _dictionary,
+}: {
+  dictionary: Awaited<ReturnType<typeof getDictionary>>
+}) => {
   // Hooks
   const { settings } = useSettings()
   const { isBreakpointReached } = useHorizontalNav()
@@ -57,9 +60,7 @@ const Navigation = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getD
             horizontalLayoutClasses.navigationContentWrapper,
             'flex items-center is-full plb-2'
           ),
-        })}>
-        <HorizontalMenu dictionary={dictionary} />
-      </StyledDiv>
+        })}></StyledDiv>
     </div>
   )
 }
